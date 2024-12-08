@@ -4,6 +4,7 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 export default {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
+        './resources/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/**/*.blade.php',
         './resources/**/*.js',
@@ -16,5 +17,8 @@ export default {
             },
         },
     },
-    plugins: [],
+    plugins: [
+        //require('@tailwindcss/forms'), 
+        //require('@tailwindcss/aspect-ratio')
+    ],
 };

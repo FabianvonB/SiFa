@@ -2,62 +2,61 @@
 @extends('app')
 @section('content')
 
-<main class="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
-    <div class="text-center">
+<main x-data="{ isOpen: false }" class="grid min-h-full place-items-center bg-white px-6 py-24 sm:py-32 lg:px-8">
+    <!-- Main Content -->
+    <div class="text-center mb-12">
         <p class="text-base font-semibold text-indigo-600">Riddle 4</p>
-        <h1 class="mt-4 text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">Active Listening
+        <h1 class="mt-4 text-balance text-5xl font-semibold tracking-tight text-gray-900 sm:text-7xl">
+            Active Listening
         </h1>
-        <p class="mt-6 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">But there could be more hidden here.
+        <p class="mt-6 text-pretty text-lg font-medium text-gray-500 sm:text-xl/8">
+            But there could be more hidden here.
         </p>
-        <div class="mt-10 flex items-center justify-center gap-x-6">
-            <a href="#"
-                class="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Go
-                back home</a>
-            <a href="#" class="text-sm font-semibold text-gray-900">Contact support <span
-                    aria-hidden="true">&rarr;</span></a>
-        </div>
     </div>
 
-    {{-- Filter 2: Piece count --}}
-    {{-- <div class="mt-6 px-4 sm:px-8">
-        <div class="w-full max-w-md mx-auto">
-            <label for="range" class="block text-sm font-semibold mb-2 leading-6 text-gray-900">
-                {{__('layout.filters.piece_count')}}
-            </label>
-
-            <!-- Range Slider Container -->
-            <div class="relative mt-4">
-                <div class="slider-container">
-                    <div class="slider-range" :style="rangeStyle"></div>
-                </div>
-                <!-- Min Handle -->
-                <input id="minPieceCount" type="range" name="minPieceCount" min="0" max="3000" step="100"
-                    x-model.number="minValue" @input="updateMinValue" class="slider-handle min-handle absolute" />
-                <!-- Max Handle -->
-                <input id="maxPieceCount" type="range" name="maxPieceCount" min="0" max="3000" step="100"
-                    x-model.number="maxValue" @input="updateMaxValue" class="slider-handle max-handle absolute" />
+    <!-- Radio Slider Section -->
+    <div class="flex items-center justify-center rounded-lg w-full max-w-lg">
+        <!-- Outer container for the radio slider -->
+        <div x-data="{ value: 50 }" class="relative w-full p-8 bg-gray-200 rounded-lg shadow-md">
+            <!-- Radio Title (above the image) -->
+            <div class="text-center mb-4">
+                <span class="bg-gradient-to-b from-gray-700 to-gray-900 px-4 py-2 text-yellow-400 font-bold text-sm w-full uppercase rounded-lg inline-block">
+                    1920s Radio
+                </span>
             </div>
 
-            <div class="text-center mt-2">
-                <span x-text="maxValue" class="text-lg font-semibold"></span> pieces
-                <div x-show="maxValue == 3000" class="text-lg text-gray-900 font-semibold">
-                    <span x-text="minValue"></span>
-                    <span> - </span>
-                    <span x-text="maxValue"> </span>
-                    <span> {{__('pieces or bigger')}}</span>
+            <!-- Radio Background Image -->
+            <img 
+                src="{{ asset('images/radio.png') }}" 
+                alt="1920s Radio" 
+                class="w-full h-64 object-cover rounded-lg" 
+            />
+
+            <!-- Decorative overlay for better contrast -->
+            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-70 rounded-lg"></div>
+
+            <!-- Content overlay -->
+            <div class="relative z-10 text-center">
+                <!-- Slider Dial -->
+                <div class="flex items-center justify-center mt-12">
+                    <input 
+                        type="range" 
+                        x-model="value" 
+                        min="0" 
+                        max="100"
+                        class="slider-thumb appearance-none w-2/3 h-2 bg-gray-200 rounded-lg focus:outline-none"
+                    />
                 </div>
-                <div x-show="maxValue < 3000" class="text-lg text-gray-900 font-semibold">
-                    <span x-text="minValue"></span>
-                    <span> - </span>
-                    <span x-text="maxValue"> </span>
-                    <span>{{__('Pieces')}}</span>
+
+                <!-- Frequency Display -->
+                <div class="mt-4 text-gray-200">
+                    <span class="text-lg font-bold">
+                        Frequency: <span x-text="value"></span> kHz
+                    </span>
                 </div>
             </div>
         </div>
-    </div> --}}
-
-
-
+    </div>
 </main>
 
 

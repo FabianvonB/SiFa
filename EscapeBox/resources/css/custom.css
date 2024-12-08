@@ -2,6 +2,38 @@
     display: none !important;
 }
 
+.border-animate {
+    position: relative;
+    border: 0px solid transparent;
+    overflow: hidden; /* Prevents the animation from spilling outside the div */
+}
+
+.border-animate::before,
+.border-animate::after {
+    content: '';
+    position: absolute;
+    width: 100%; /* Ensures the width of the animation is confined to the div */
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #eab308 , transparent);
+    top: 0;
+    left: 0;
+    transform: translateX(-100%);
+}
+
+.border-animate::after {
+    top: auto;
+    bottom: 0;
+    transform: translateX(100%);
+}
+
+.border-animate:hover::before {
+    animation: slide-top 2s linear forwards;
+}
+
+.border-animate:hover::after {
+    animation: slide-bottom 2s linear forwards;
+}
+
 @keyframes slide-top {
     0% { transform: translateX(-100%); }
     100% { transform: translateX(100%); }
