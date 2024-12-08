@@ -1,0 +1,89 @@
+[x-cloak] {
+    display: none !important;
+}
+
+@keyframes slide-top {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+@keyframes slide-bottom {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+.grayscale {
+    filter: grayscale(50%);
+  }
+
+.slider-container {
+    position: relative;
+    height: 8px;
+    background: #ddd;
+    border-radius: 4px;
+}
+
+.slider-range {
+    position: absolute;
+    height: 8px;
+    background: #4f46e5;
+    border-radius: 4px;
+    top: 0;
+}
+
+.slider-handle {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;  /* Extend width to cover the full range */
+    background: transparent;
+    position: absolute;
+    top: 0;
+    height: 8px;
+    cursor: pointer;
+    pointer-events: none; /* Allow interaction */
+    touch-action: manipulation;
+}
+
+input[type="range"].min-handle {
+    z-index: 3;
+}
+
+input[type="range"].max-handle {
+    z-index: 3;
+}
+
+/* Custom pseudo-element to limit the clickable area of the min-handle */
+input[type="range"].min-handle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: calc(100% - (calc(((var(--max-value) - 100) / (2000 - 100)) * 100%) - 50px)); /* Limits the clickable area to max-value - 50 */
+    bottom: 0;
+    background: transparent;
+    pointer-events: auto; /* Re-enable pointer events for this area */
+}
+
+/* Custom pseudo-element to limit the clickable area of the max-handle */
+input[type="range"].max-handle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: calc((calc(((var(--min-value) - 100) / (2000 - 100)) * 100%) + 50px)); /* Limits the clickable area to min-value + 50 */
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    pointer-events: auto; /* Re-enable pointer events for this area */
+}
+
+input[type="range"]::-webkit-slider-thumb,
+input[type="range"]::-moz-range-thumb {
+    width: 24px;
+    height: 24px;
+    background: #4f46e5;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    z-index: 3;
+    pointer-events: auto;
+}
