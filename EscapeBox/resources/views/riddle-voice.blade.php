@@ -37,7 +37,7 @@
             <div class="relative z-10 text-center">
                 <!-- Slider Dial -->
                 <div class="flex items-center justify-center mt-12">
-                    <input type="range" x-model="frequency" min="0" max="100" step="0.1"
+                    <input type="range" x-model="frequency" min="0" max="100" step="0.2"
                         class="slider-thumb appearance-none w-full h-2 bg-gray-200 rounded-lg focus:outline-none" />
                 </div>
 
@@ -96,11 +96,11 @@
                 });
             
                 // Set volume based on frequency
-                if (frequency == 71.5) { // Only play riddle_solution.mp3
+                if (frequency == 71.6) { // Only play riddle_solution.mp3
                     this.audios[1].volume = 0.3;
                     this.audios[2].volume = 0.3;
                     this.audios[3].volume = 0.3;
-                } else if (frequency == 37) { // Only play riddle_voice1.mp3
+                } else if (frequency == 37.2) { // Only play riddle_voice1.mp3
                     this.audios[0].volume = 0.3;
                     this.audios[2].volume = 0.3;
                     this.audios[3].volume = 0.3;
